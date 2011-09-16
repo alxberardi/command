@@ -13,8 +13,8 @@ module Command
     def executed?
       @executed && children.all?(&:executed?)
     end
-
-
+    
+    
     def execute
       execute_all
     end
@@ -23,8 +23,20 @@ module Command
     def unexecute
       unexecute_all
     end
-
-
+    
+    
+    def executed
+      executed = @executed ? [self] : []
+      executed + children.map(&:executed).flatten
+    end
+    
+    
+    def not_executed
+      not_executed = @executed ? [] : [self]
+      not_executed + children.map(&:not_executed).flatten
+    end
+    
+    
     protected
 
     # To be overridden in order to contain specific execution logic
