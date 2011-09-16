@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = "command"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alessandro Berardi,,,"]
-  s.date = "2011-09-15"
+  s.date = "2011-09-16"
   s.email = "berardialessandro@gmail.com"
   s.extra_rdoc_files = ["README"]
   s.files = ["Gemfile.lock", "Rakefile", "README", "Gemfile", "command.gemspec", "spec/command_spec.rb", "lib/command/proc_command.rb", "lib/command/command.rb", "lib/command.rb"]
