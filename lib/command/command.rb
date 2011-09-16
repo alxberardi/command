@@ -28,16 +28,14 @@ module Command
     protected
 
     # To be overridden in order to contain specific execution logic
-    # Must return true or false depending on success
     def execute_command
-      true
+      # Must return true or false depending on success
     end
 
 
     # To be overridden in order to contain specific unexecution logic
-    # Must return true or false depending on success
     def unexecute_command
-      true
+      # Must return true or false depending on success
     end
 
 
