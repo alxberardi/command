@@ -15,6 +15,11 @@ module Command
     end
     
     
+    def not_executed?
+      !@executed && !children.any?(&:executed?)
+    end
+    
+    
     def execute
       execute_all
     end
@@ -54,15 +59,15 @@ module Command
     private
 
     def execute_all
-      return false unless children.map(&:execute).all? && !@executed && execute_command
+      children.each(&:execute)
+      return false unless children.all?(&:executed?) && !@executed && execute_command
       @executed = true
     end
 
 
     def unexecute_all
-      return false unless (!@executed || unexecute_command) && children.map(&:unexecute).all?
-      @executed = false
-      true
+      @executed = false if @executed && unexecute_command
+      !@executed && children.map(&:unexecute).all?
     end
 
   end
