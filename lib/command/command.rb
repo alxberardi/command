@@ -54,12 +54,15 @@ module Command
     private
 
     def execute_all
-      children.map(&:execute).all? && !@executed && execute_command && (@executed = true)
+      return false unless children.map(&:execute).all? && !@executed && execute_command
+      @executed = true
     end
 
 
     def unexecute_all
-      children.map(&:unexecute).all? && @executed && unexecute_command && !(@executed = false)
+      return false unless (!@executed || unexecute_command) && children.map(&:unexecute).all?
+      @executed = false
+      true
     end
 
   end
