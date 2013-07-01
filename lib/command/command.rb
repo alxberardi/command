@@ -1,12 +1,23 @@
-require 'rtree'
-
 module Command
   class Command
 
-    include RTree::TreeNode
-
     def initialize
       @executed = false
+    end
+
+
+    def children
+      @children ||= []
+    end
+
+
+    def add_child(child)
+      children << child
+    end
+
+
+    def add_children(*children)
+      children.each { |child| add_child(child) }
     end
 
 
