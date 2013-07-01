@@ -1,15 +1,15 @@
-require "rubygems"
-require "rubygems/package_task"
-require "rdoc/task"
+require 'rubygems'
+require 'rubygems/package_task'
+require 'rdoc/task'
 
-require "rspec"
-require "rspec/core/rake_task"
+require 'rspec'
+require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new do |t|
   t.rspec_opts = %w(--format documentation --colour)
 end
 
 
-task :default => ["spec"]
+task :default => ['spec']
 
 # This builds the actual gem. For details of what all these options
 # mean, and other ones you can add, check the documentation here:
@@ -19,20 +19,20 @@ task :default => ["spec"]
 spec = Gem::Specification.new do |s|
 
   # Change these as appropriate
-  s.name              = "command"
-  s.version           = "0.1.2"
-  s.summary           = "Ruby implementation of the composite commands pattern"
-  s.author            = "Alessandro Berardi,,,"
-  s.email             = "berardialessandro@gmail.com"
-  s.homepage          = "http://github.com/AlessandroBerardi/action_profiler"
+  s.name              = 'command'
+  s.version           = '0.1.3'
+  s.summary           = 'Ruby implementation of the composite commands pattern'
+  s.author            = 'Alessandro Berardi,,,'
+  s.email             = 'berardialessandro@gmail.com'
+  s.homepage          = 'http://github.com/AlessandroBerardi/command'
 
   s.has_rdoc          = true
   s.extra_rdoc_files  = %w(README)
   s.rdoc_options      = %w(--main README)
 
   # Add any extra files to include in the gem
-  s.files             = %w(Gemfile.lock Rakefile README Gemfile command.gemspec) + Dir.glob("{spec,lib}/**/*")
-  s.require_paths     = ["lib"]
+  s.files             = %w(Gemfile.lock Rakefile README Gemfile command.gemspec) + Dir.glob('{spec,lib}/**/*')
+  s.require_paths     = ['lib']
 
   # If you want to depend on other gems, add them here, along with any
   # relevant versions
@@ -53,10 +53,10 @@ Gem::PackageTask.new(spec) do |pkg|
   pkg.gem_spec = spec
 end
 
-desc "Build the gemspec file #{spec.name}.gemspec"
+desc 'Build the gemspec file #{spec.name}.gemspec'
 task :gemspec do
-  file = File.dirname(__FILE__) + "/#{spec.name}.gemspec"
-  File.open(file, "w") {|f| f << spec.to_ruby }
+  file = File.dirname(__FILE__) + '/#{spec.name}.gemspec'
+  File.open(file, 'w') {|f| f << spec.to_ruby }
 end
 
 # If you don't want to generate the .gemspec file, just remove this line. Reasons
@@ -68,12 +68,12 @@ task :package => :gemspec
 
 # Generate documentation
 RDoc::Task.new do |rd|
-  rd.main = "README"
-  rd.rdoc_files.include("README", "lib/**/*.rb")
-  rd.rdoc_dir = "rdoc"
+  rd.main = 'README'
+  rd.rdoc_files.include('README', 'lib/**/*.rb')
+  rd.rdoc_dir = 'rdoc'
 end
 
 desc 'Clear out RDoc and generated packages'
 task :clean => [:clobber_rdoc, :clobber_package] do
-  rm "#{spec.name}.gemspec"
+  rm '#{spec.name}.gemspec'
 end
