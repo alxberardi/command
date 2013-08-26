@@ -1,11 +1,8 @@
-source :gemcutter
+source 'http://rubygems.org'
 
 gem 'rake'
 gem 'gem-this'
 
-# Rtree
-gem 'rtree', '~> 0.3.3', :git => "git://github.com/AlessandroBerardi/rtree.git"
-
 group :test do
-  gem 'rspec'
+  gem 'rspec', '>= 2.14.0.rc1'
 end

@@ -40,7 +40,7 @@ spec = Gem::Specification.new do |s|
   s.add_dependency("rtree", "~> 0.3.3") #https://github.com/AlessandroBerardi/rtree
 
   # If your tests use any gems, include them here
-  s.add_development_dependency("rspec")
+  s.add_development_dependency('rspec', '>= 2.14.0.rc1')
   
   # Requirements
   s.requirements << "rtree gem from https://github.com/AlessandroBerardi/rtree"
