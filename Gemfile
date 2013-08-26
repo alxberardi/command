@@ -1,8 +1,8 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rake'
 gem 'gem-this'
 
 group :test do
-  gem 'rspec', '>= 2.14.0.rc1'
+  gem 'rspec', '~> 2.14.0'
 end
